@@ -4,6 +4,7 @@ header .nav-wrapper {
   width: 100%;
   z-index: 2;
   position: fixed;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 header nav {
@@ -55,7 +56,9 @@ header nav p {
 }
 
 header nav a:any-link {
-  color: currentcolor;
+  color: var(--brand-color);
+  text-decoration: none;
+  font-weight: 500;
 }
 
 /* hamburger */
@@ -148,6 +151,12 @@ header .nav-brand {
   line-height: 1;
 }
 
+header nav .nav-brand a {
+  color: var(--brand-color);
+  font-size: 22px;
+  font-weight: 700;
+}
+
 header nav .nav-brand img {
   width: 128px;
   height: auto;
@@ -170,7 +179,7 @@ header nav[aria-expanded='true'] .nav-sections {
 header nav .nav-sections ul {
   list-style: none;
   padding-left: 0;
-  font-size: var(--body-font-size-s);
+  font-size: var(--body-font-size-m);
 }
 
 header nav .nav-sections ul > li {
@@ -269,4 +278,23 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+header nav .nav-tools a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e8f4f8;
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  color: var(--brand-color);
+  text-decoration: none;
+}
+
+header nav .nav-tools a:hover {
+  background-color: #d0eaf0;
+  text-decoration: none;
 }

@@ -1,0 +1,82 @@
+.hero-banner-container {
+  margin: 0;
+  background: linear-gradient(135deg, #eef4ff 0%, #f8fbff 50%, #eef4ff 100%);
+}
+
+.hero-banner-container .hero-banner-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.hero-banner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.hero-banner > div:first-child h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--brand-color);
+  margin: 0 0 8px;
+}
+
+.hero-banner > div:first-child p {
+  margin: 8px 0;
+  color: var(--dark-color);
+}
+
+.hero-banner > div:first-child p strong {
+  color: #2db84c;
+}
+
+.hero-banner > div:first-child p em {
+  font-style: normal;
+  color: #2db84c;
+  border: 1px solid #2db84c;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: var(--body-font-size-s);
+  display: inline-block;
+}
+
+.hero-banner > div:last-child > div {
+  background-color: var(--brand-blue);
+  border-radius: 16px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.hero-banner > div:last-child > div > p {
+  background: rgb(255 255 255 / 10%);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 0;
+  color: white;
+  font-size: var(--body-font-size-s);
+  font-weight: 500;
+}
+
+@media (width >= 900px) {
+  .hero-banner-container .hero-banner-wrapper {
+    padding: 60px 32px;
+  }
+
+  .hero-banner {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  .hero-banner > div:first-child h1 {
+    font-size: 42px;
+  }
+
+  .hero-banner > div:last-child > div {
+    padding: 32px;
+    gap: 16px;
+  }
+}

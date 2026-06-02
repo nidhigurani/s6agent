@@ -1,0 +1,44 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "information-page",
+      "urls": ["https://www.goindigo.in/information/6e-sme.html"],
+      "description": "IndiGo informational page with hero banner and text content (program details, terms and conditions)",
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": ["section.hero-banner"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "hero-banner",
+          "name": "Hero Banner",
+          "selector": "section.hero-banner",
+          "style": null,
+          "blocks": ["hero-banner"],
+          "defaultContent": []
+        },
+        {
+          "id": "program-introduction",
+          "name": "Program Introduction",
+          "selector": "section.content",
+          "style": null,
+          "blocks": [],
+          "defaultContent": ["section.content > p", "section.content > ul"]
+        },
+        {
+          "id": "terms-and-conditions",
+          "name": "Terms and Conditions",
+          "selector": "section.terms-conditions",
+          "style": null,
+          "blocks": [],
+          "defaultContent": ["section.terms-conditions > p"]
+        }
+      ]
+    }
+  ]
+}

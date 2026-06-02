@@ -1,0 +1,39 @@
+{
+  "variantName": "hero-banner",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-06-02T11:09:36.219Z",
+  "sourceContext": {
+    "originUrl": "https://www.goindigo.in/information/6e-sme.html",
+    "originPage": "6E SME Program information page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "purpose": "information-banner",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "heading only",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "informational pages with wide banner images",
+      "corporate program landing pages",
+      "pages requiring a simple image + title hero without CTAs"
+    ],
+    "notSuitableFor": [
+      "marketing landing pages needing multiple CTAs",
+      "hero sections with video backgrounds",
+      "pages needing text-heavy hero content"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/information/6e-sme"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-02T11:09:36.219Z"
+  }
+}
