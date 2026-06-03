@@ -118,6 +118,18 @@ function buildSectionMetadataFromParagraphs(main) {
   section.append(metadata);
 }
 
+function buildBreadcrumb(main) {
+  const firstUl = main.querySelector('ul');
+  if (!firstUl) return;
+  const firstLink = firstUl.querySelector('a');
+  if (!firstLink || firstLink.textContent.trim() !== 'Home') return;
+
+  const block = buildBlock('breadcrumb', '');
+  block.textContent = '';
+  block.append(firstUl.cloneNode(true));
+  firstUl.replaceWith(block);
+}
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -142,6 +154,7 @@ function buildAutoBlocks(main) {
       });
     }
 
+    buildBreadcrumb(main);
     buildSectionMetadataFromParagraphs(main);
     buildStatsBlock(main);
     fixBannerImage(main);
