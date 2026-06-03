@@ -18,24 +18,36 @@ import {
  */
 function buildHeroBlock(main) {
   const h1 = main.querySelector('h1');
-  const picture = main.querySelector('picture');
-  // eslint-disable-next-line no-bitwise
-  if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
-    if (h1.closest('.hero') || picture.closest('.hero')) {
-      return;
+  let picture = main.querySelector('picture');
+  let heroImg = picture?.querySelector('img');
+
+  if (!picture) {
+    heroImg = main.querySelector('img');
+    if (heroImg) {
+      picture = heroImg.closest('p') || heroImg.parentElement;
     }
-    const img = picture.querySelector('img');
-    if (img && (!img.src || img.src.includes('about:error') || img.src.includes('content.da.live'))) {
-      const bannerUrl = 'https://www.goindigo.in/content/dam/s6web/in/en/assets/static-pages/6e-sme/sme-banner-new.png';
-      img.src = bannerUrl;
-      picture.querySelectorAll('source').forEach((source) => {
-        source.srcset = bannerUrl;
-      });
-    }
-    const section = document.createElement('div');
-    section.append(buildBlock('hero', { elems: [picture, h1] }));
-    main.prepend(section);
   }
+
+  if (!h1 || !picture || !heroImg) return;
+
+  // eslint-disable-next-line no-bitwise
+  if (!(h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) return;
+  if (h1.closest('.hero') || picture.closest('.hero')) return;
+
+  const bannerUrl = 'https://www.goindigo.in/content/dam/s6web/in/en/assets/static-pages/6e-sme/sme-banner-new.png';
+  if (!heroImg.src || heroImg.src.includes('about:error') || heroImg.src.includes('content.da.live')) {
+    heroImg.src = bannerUrl;
+  }
+
+  const pic = document.createElement('picture');
+  const source = document.createElement('source');
+  source.srcset = heroImg.src;
+  pic.append(source, heroImg);
+
+  const section = document.createElement('div');
+  section.append(buildBlock('hero', { elems: [pic, h1] }));
+  main.prepend(section);
+  if (picture.tagName === 'P' && !picture.textContent.trim()) picture.remove();
 }
 
 /**

@@ -1,23 +1,24 @@
 .corporate-international table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 16px 0;
-  font-size: var(--body-font-size-s);
-}
-
-.corporate-international th,
-.corporate-international td {
-  border: 1px solid #e0eaf5;
-  padding: 12px 16px;
-  text-align: center;
-}
-
-.corporate-international th {
-  background-color: var(--background-color);
-  font-weight: 600;
-  color: var(--text-color);
-}
-
-.corporate-international tbody td {
-  background-color: var(--background-color);
-}
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: var(--body-font-size-s);
+  }
+  
+  .corporate-international th,
+  .corporate-international td {
+    border: 1px solid #e0eaf5;
+    padding: 12px 16px;
+    text-align: center;
+  }
+  
+  .corporate-international th {
+    background-color: var(--background-color);
+    font-weight: 600;
+    color: var(--text-color);
+  }
+  
+  .corporate-international tbody td {
+    background-color: var(--background-color);
+  }
+  
