@@ -131,10 +131,17 @@ export default async function decorate(block) {
   });
 
   const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
+  const brandLink = navBrand.querySelector('a');
   if (brandLink) {
     brandLink.className = '';
-    brandLink.closest('.button-container').className = '';
+    const wrapper = brandLink.closest('.button-container');
+    if (wrapper) wrapper.className = '';
+    const logo = document.createElement('img');
+    logo.src = 'https://www.goindigo.in/content/dam/s6web/in/en/assets/logo/IndiGo_logo_2x.png';
+    logo.alt = 'IndiGo';
+    logo.loading = 'eager';
+    brandLink.textContent = '';
+    brandLink.append(logo);
   }
 
   const navSections = nav.querySelector('.nav-sections');
