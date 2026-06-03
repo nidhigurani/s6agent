@@ -25,10 +25,11 @@ function buildHeroBlock(main) {
       return;
     }
     const img = picture.querySelector('img');
-    if (img && (!img.src || img.src === 'about:error' || img.src.includes('about:error'))) {
-      img.src = 'https://www.goindigo.in/content/dam/s6web/in/en/assets/static-pages/6e-sme/sme-banner-new.png';
+    if (img && (!img.src || img.src.includes('about:error') || img.src.includes('content.da.live'))) {
+      const bannerUrl = 'https://www.goindigo.in/content/dam/s6web/in/en/assets/static-pages/6e-sme/sme-banner-new.png';
+      img.src = bannerUrl;
       picture.querySelectorAll('source').forEach((source) => {
-        source.srcset = img.src;
+        source.srcset = bannerUrl;
       });
     }
     const section = document.createElement('div');
