@@ -1,0 +1,37 @@
+.breadcrumb nav {
+  padding: 12px 0;
+}
+
+.breadcrumb .breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--body-font-size-xs);
+}
+
+.breadcrumb .breadcrumb-list li {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb .breadcrumb-list li:not(:last-child)::after {
+  content: '>';
+  margin: 0 8px;
+  color: var(--dark-color);
+}
+
+.breadcrumb .breadcrumb-list li a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.breadcrumb .breadcrumb-list li a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb .breadcrumb-list li[aria-current="page"] span {
+  color: var(--dark-color);
+}

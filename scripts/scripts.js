@@ -117,6 +117,24 @@ function decorateButtons(main) {
  * Decorates the main element.
  * @param {Element} main The main element
  */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll('.section-metadata').forEach((metadata) => {
+    const section = metadata.closest('.section');
+    if (section) {
+      [...metadata.children].forEach((row) => {
+        const key = row.children[0]?.textContent.trim().toLowerCase();
+        const value = row.children[1]?.textContent.trim();
+        if (key === 'style') {
+          value.split(',').forEach((style) => {
+            section.classList.add(style.trim());
+          });
+        }
+      });
+    }
+    metadata.remove();
+  });
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   decorateIcons(main);
@@ -124,6 +142,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateButtons(main);
+  decorateSectionMetadata(main);
 }
 
 /**
