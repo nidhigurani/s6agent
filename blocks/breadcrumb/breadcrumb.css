@@ -1,5 +1,9 @@
+.breadcrumb-container {
+  background-color: #e8f4fa;
+}
+
 .breadcrumb nav {
-  padding: 12px 0;
+  padding: 20px 0;
 }
 
 .breadcrumb .breadcrumb-list {
@@ -9,7 +13,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: var(--body-font-size-xs);
+  font-size: var(--body-font-size-s);
 }
 
 .breadcrumb .breadcrumb-list li {
@@ -19,19 +23,21 @@
 
 .breadcrumb .breadcrumb-list li:not(:last-child)::after {
   content: '>';
-  margin: 0 8px;
-  color: var(--dark-color);
+  margin: 0 16px;
+  color: #1a0a91;
+  font-weight: 600;
 }
 
 .breadcrumb .breadcrumb-list li a {
-  color: var(--link-color);
-  text-decoration: none;
-}
-
-.breadcrumb .breadcrumb-list li a:hover {
+  color: #1a0a91;
   text-decoration: underline;
 }
 
+.breadcrumb .breadcrumb-list li a:hover {
+  text-decoration: none;
+}
+
 .breadcrumb .breadcrumb-list li[aria-current="page"] span {
-  color: var(--dark-color);
+  color: #1a0a91;
+  text-decoration: underline;
 }
