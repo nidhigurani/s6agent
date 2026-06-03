@@ -21,9 +21,16 @@ function buildHeroBlock(main) {
   const picture = main.querySelector('picture');
   // eslint-disable-next-line no-bitwise
   if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
-    // Check if h1 or picture is already inside a hero block
     if (h1.closest('.hero') || picture.closest('.hero')) {
-      return; // Don't create a duplicate hero block
+      return;
+    }
+    const img = picture.querySelector('img');
+    if (img && (!img.src || img.src.includes('about:error') || img.src.includes('content.da.live'))) {
+      const bannerUrl = 'https://www.goindigo.in/content/dam/s6web/in/en/assets/static-pages/6e-sme/sme-banner-new.png';
+      img.src = bannerUrl;
+      picture.querySelectorAll('source').forEach((source) => {
+        source.srcset = bannerUrl;
+      });
     }
     const section = document.createElement('div');
     section.append(buildBlock('hero', { elems: [picture, h1] }));
@@ -41,6 +48,77 @@ async function loadFonts() {
   } catch (e) {
     // do nothing
   }
+}
+
+const STATS_LABELS = [
+  'Daily Flights', 'Domestic Destinations',
+  'International Destinations', 'Happy Customers', 'Fleet Strong',
+];
+
+function buildStatsBlock(main) {
+  const paragraphs = [...main.querySelectorAll('p')];
+  const startIdx = paragraphs.findIndex(
+    (p) => STATS_LABELS.some((l) => p.textContent.trim() === l),
+  );
+  if (startIdx < 1) return;
+
+  const numberIdx = startIdx - 1;
+  const statParagraphs = [];
+  let i = numberIdx;
+  while (i < paragraphs.length) {
+    const text = paragraphs[i].textContent.trim();
+    if (text === 'style' || text === 'light') break;
+    statParagraphs.push(paragraphs[i]);
+    i += 1;
+  }
+
+  if (statParagraphs.length < 4) return;
+
+  const rows = [];
+  for (let j = 0; j < statParagraphs.length; j += 2) {
+    const number = statParagraphs[j]?.textContent.trim() || '';
+    const label = statParagraphs[j + 1]?.textContent.trim() || '';
+    if (number && label) rows.push([number, label]);
+  }
+
+  if (rows.length < 2) return;
+
+  const block = buildBlock('stats', rows.map((row) => row.map((cell) => {
+    const div = document.createElement('div');
+    div.textContent = cell;
+    return div;
+  })));
+
+  const section = statParagraphs[0].closest('div');
+  statParagraphs.forEach((p) => p.remove());
+  section.append(block);
+}
+
+function buildSectionMetadataFromParagraphs(main) {
+  const paragraphs = [...main.querySelectorAll('p')];
+  const styleIdx = paragraphs.findIndex((p) => p.textContent.trim() === 'style');
+  if (styleIdx < 0 || styleIdx >= paragraphs.length - 1) return;
+
+  const valueP = paragraphs[styleIdx + 1];
+  if (!valueP) return;
+
+  const value = valueP.textContent.trim();
+  if (!value) return;
+
+  const section = paragraphs[styleIdx].closest('div');
+  const metadata = document.createElement('div');
+  metadata.className = 'section-metadata';
+  const row = document.createElement('div');
+  const keyCell = document.createElement('div');
+  keyCell.textContent = 'style';
+  const valueCell = document.createElement('div');
+  valueCell.textContent = value;
+  row.append(keyCell, valueCell);
+  metadata.append(row);
+
+  paragraphs[styleIdx].remove();
+  valueP.remove();
+  section.append(metadata);
 }
 
 /**
@@ -67,6 +145,8 @@ function buildAutoBlocks(main) {
       });
     }
 
+    buildSectionMetadataFromParagraphs(main);
+    buildStatsBlock(main);
     buildHeroBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
