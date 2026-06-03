@@ -23,7 +23,7 @@ footer .footer > div {
   padding: 40px 24px 24px;
 }
 
-footer .footer .section:last-child {
+footer .footer > div .section:last-child {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -34,7 +34,7 @@ footer .footer .section:last-child {
   gap: 24px;
 }
 
-footer .footer .section:last-child ul {
+footer .footer > div .section:last-child ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -42,17 +42,17 @@ footer .footer .section:last-child ul {
   gap: 12px;
 }
 
-footer .footer .section:first-child {
+footer .footer > div .section:first-child {
   display: grid;
   grid-template-columns: 1fr;
   gap: 32px;
 }
 
-footer .footer .section:first-child > div {
+footer .footer > div .section:first-child > div {
   margin: 0;
 }
 
-footer .footer .section:first-child h2 {
+footer .footer > div .section:first-child h2 {
   font-size: var(--body-font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -61,19 +61,19 @@ footer .footer .section:first-child h2 {
   color: #fff;
 }
 
-footer .footer .section:first-child ul {
+footer .footer > div .section:first-child ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-footer .footer .section:first-child li {
+footer .footer > div .section:first-child li {
   margin-bottom: 8px;
   line-height: 1.6;
 }
 
 @media (width >= 600px) {
-  footer .footer .section:first-child {
+  footer .footer > div .section:first-child {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -83,7 +83,7 @@ footer .footer .section:first-child li {
     padding: 48px 32px 24px;
   }
 
-  footer .footer .section:first-child {
+  footer .footer > div .section:first-child {
     grid-template-columns: repeat(5, 1fr);
   }
 }
